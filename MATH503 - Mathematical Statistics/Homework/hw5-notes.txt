@@ -1,0 +1,17 @@
+1. For Problem 1e, 𝜃
+θ
+ denotes the variance of the normal distribution.
+
+2. For Problem 1, note the following in Casella and Berger (p. 282): "Any one-to-one function of a minimal sufficient statistic is also a minimal sufficient statistic."
+
+3. For Problem 2, show that 𝑌4
+Y
+4
+ is a complete sufficient statistic.
+
+4. For Problem 3, show that 𝑌¯
+Y
+¯
+ is a complete sufficient statistic.
+
+5. For Problem 4, show that Y is a complete sufficient statistic.

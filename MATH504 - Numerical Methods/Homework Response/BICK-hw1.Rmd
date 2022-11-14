@@ -1,0 +1,52 @@
+---
+title: "Homework1"
+author: "Nathan Bick"
+date: "9/13/2022"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+### Problem 1
+
+Geometrically describe with reasoning the following unit ball in $\mathbb{R}^2$.
+
+$B_{\infty}^{(1)}= \{ x\ \in\ \mathbb{R}^2\ |\ \| x \|_{\infty} \leq 1 \}$
+
+#### Response
+
+We recall the definition of the L-$\infty$ norm, which is $\|x\|_{\infty}$. If $x = (x_1,...,x_n)$, then $\|x\|_{\infty}=max\{|x_1|, ..., |x_n|\}$, the largest magnitude of any component of x. 
+
+$B_{\infty}^{(1)}$ is the area defined by all vectors whose L-$\infty$ norm is less than or equal to 1. 
+
+$\|x\|_\infty = 1$ for all $(x_1,x_2)$ where either $|x_1|=1$ and $|x_1|\leq 1$ or $|x_1|\leq 1$ and $|x_1|=1$. This is therefore the shape of a square.
+
+### Problem 2
+Prove the following triangle inequality.
+
+$\| {x + y} \|_2 \leq \| {x} \|_2 + \| {y} \|_2$
+
+#### Response
+
+We recall the definition of the L-2 norm as the Euclidean distance given by $\Vert {x} \Vert_2 = (|x_1|^2 + ... + |x_n|^2)^{\frac{1}{2}}$
+
+We introduce inner product $\langle x,y \rangle = \sum_{i=1}^{n}{x_iy_i}$ .
+
+Then $\Vert x + y \Vert_2^2 = \Vert x \Vert_2^2 + 2\langle x,y \rangle + \Vert y \Vert_2^2  \leq \Vert x \Vert_2^2 + \Vert y \Vert_2^2 + 2\Vert x \Vert_2\ \Vert y \Vert_2$ by Cauchy-Schwarz.
+
+So we have $\Vert x + y \Vert_2^2 \leq (\Vert x \Vert_2 + \Vert y \Vert_2)^2$ which gives us $\Vert x + y \Vert_2 \leq \Vert x \Vert_2 + \Vert y \Vert_2$, the triangle inequality for the L-2 norm.
+
+So we have $\| x+y \| \leq \| x \| + \| y \|$.
+
+### Problem 3
+
+Prove that for any matrix $A = (a_{ij})_{m \times n}$, the matrix $A^TA$ is symmetric.
+
+#### Response
+
+We know that for any matrix A, B, then $(AB)^T = B^TA^T$.
+
+Consider $(A^TA)^T =A^T(A^T)^T = A^TA$.
+
+We see $(A^TA)^T = A^TA$, so $A^TA$ is symmetric.

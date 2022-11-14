@@ -1,0 +1,225 @@
+---
+title: "Homework 2"
+author: "Nathan Bick"
+date: '2022-09-17'
+output: pdf_document
+---
+
+## Problem 1
+
+Consider the quadratic function
+
+$$f(x_1,x_2,x_3) = x_1^2+x_2^2+5x_3^2+2x_1x_2-2x_1x_3+4x_2x_3+x_1-x_2$$
+
+(a) Choose a matrix $A$ and vector $b$ so that $x = (x_1,x_2,x_3)$, and $f(x)=x^TAx+b \cdot x$
+(b) Choose another matrix $B$ such that $A\neq B$ and $B=B^T$ so that $f(x)=x^TB+b^Tx$
+
+## Response
+
+(a) We choose such that 
+
+$$A=\begin{pmatrix}
+    1 & 2 & -2  \\
+    0 & 2 & 4 \\
+    0 & 0 & 5
+\end{pmatrix}$$
+
+and $b = (1,-1,0)^T$
+
+(b) We choose such that 
+
+$$B=\begin{pmatrix}
+    1 & 1 & -1  \\
+    1 & 2 & 2 \\
+    -1 & 2 & 5
+\end{pmatrix}$$
+
+and $b = (1,-1,0)^T$. We see that $B=B^T$.
+
+## Problem 2
+
+Use the Spectral Decomposition Theorem and determine the eigenvalue decomposition of the matrix A given by 
+
+$$A=\begin{pmatrix}
+    3 & 1 & 0  \\
+    1 & 2 & 1 \\
+    0 & 1 & 3
+\end{pmatrix}$$
+
+## Response
+
+The spectral decomposition gives us $A=QDQ^T$ where $Q$ is a matrix of orthonormal eigenvectors and $D$ is a diagonal matrix of eigenvalues, given that $A$ is symmetric real $n\times n$ matrix.
+
+We first solve for the eigenvalues, so we solve $det(A-\lambda I) = 0$. 
+
+$$\begin{vmatrix}
+    3-\lambda & 1 & 0  \\
+    1 & 2-\lambda & 1 \\
+    0 & 1 & 3-\lambda
+\end{vmatrix} = 0$$
+
+Which gives us 
+
+$$(3-\lambda) \begin{vmatrix}
+    2-\lambda & 1 \\
+    1 & 3-\lambda
+\end{vmatrix} - (2-\lambda)\begin{vmatrix}
+    3-\lambda & 0  \\
+    0 & 3-\lambda
+\end{vmatrix} = (3-\lambda)^2(2-\lambda)-1 -(2-\lambda)(3-\lambda)^2=0$$
+
+Solving for this, gives us three eigenvalues: $\lambda_1 = 4,\lambda_2 = 3,\lambda_3 = 1$.
+
+To solve for the eigenvectors, we solve the $(A-\lambda I)v=0$.
+
+For $\lambda_1=4$ (and then for the others), we have the following matrix for which we find the nullspace.
+
+$$\begin{pmatrix}
+    3-4 & 1 & 0  \\
+    1 & 2-4 & 1 \\
+    0 & 1 & 3-4
+\end{pmatrix} = 
+\begin{pmatrix}
+    -1 & 1 & 0  \\
+    1 & -2 & 1 \\
+    0 & 1 & -1
+\end{pmatrix} \Rightarrow v = \begin{pmatrix}
+    1  \\
+    1 \\
+    1
+\end{pmatrix}$$
+
+$$\begin{pmatrix}
+    3-3 & 1 & 0  \\
+    1 & 2-3 & 1 \\
+    0 & 1 & 3-3
+\end{pmatrix} = 
+\begin{pmatrix}
+    0 & 1 & 0  \\
+    1 & -1 & 1 \\
+    0 & 1 & 0
+\end{pmatrix} \Rightarrow v = \begin{pmatrix}
+    -1  \\
+    0 \\
+    1
+\end{pmatrix}$$
+
+$$\begin{pmatrix}
+    3-1 & 1 & 0  \\
+    1 & 2-1 & 1 \\
+    0 & 1 & 3-1
+\end{pmatrix} = 
+\begin{pmatrix}
+    2 & 1 & 0  \\
+    1 & 1 & 1 \\
+    0 & 1 & 2
+\end{pmatrix} \Rightarrow v = \begin{pmatrix}
+    1  \\
+    -2 \\
+    1
+\end{pmatrix}$$
+
+So the decomposition is
+
+$$A=QDQ^T \Leftrightarrow \begin{pmatrix}
+    3 & 1 & 0  \\
+    1 & 2 & 1 \\
+    0 & 1 & 3
+\end{pmatrix} = \begin{pmatrix}
+    1 & -1 & 1  \\
+    1 & 0 & -2 \\
+    1 & 1 & 1
+\end{pmatrix}\begin{pmatrix}
+    4 & 0 & 0  \\
+    0 & 3 & 0 \\
+    0 & 0 & 1
+\end{pmatrix}\begin{pmatrix}
+    1 & -1 & 1  \\
+    1 & 0 & -2 \\
+    1 & 1 & 1
+\end{pmatrix}^T$$
+
+## Problem 3
+
+Find the linear and quadratic approximation of the following function $f(x) = exp(x_1^2+x_2^2+x_3^2)$ at $\bar{x}=(0,0,0)^T$.
+
+## Response
+
+The local linear approximation is given by 
+
+$$f(x) \approx f(x_0)+\nabla f(x_0)^T(x-x_0)$$
+
+and the local quadratic approximation is given by 
+
+$$f(x) \approx f(x_0)+\nabla f(x_0)^T(x-x_0) + \frac{1}{2}(x-x_0)^T\nabla^2 f(x_0)(x-x_0)$$
+
+First we calculate the derivatives. We see that $\nabla exp(x_1^2+x_2^2+x_3^2) = exp(x_1^2+x_2^2+x_3^2) * (2x_1,2x_2,2x_3)^T$
+
+Then we calculate $\nabla^2 exp(x_1^2+x_2^2+x_3^2)$ which gives the below:
+
+$$\begin{pmatrix}(4 e^(x_1^2 + x_2^2 + x_3^2) x_1^2 + 2 e^(x_1^2 + x_2^2 + x_3^2) & 4 e^(x_1^2 + x_2^2 + x_3^2) x_1 x_2 & 4 e^(x_1^2 + x_2^2 + x_3^2) x_1 x_3 \\
+4 e^(x_1^2 + x_2^2 + x_3^2) x_1 x_2 & 4 e^(x_1^2 + x_2^2 + x_3^2) x_2^2 + 2 e^(x_1^2 + x_2^2 + x_3^2) & 4 e^(x_1^2 + x_2^2 + x_3^2) x_2 x_3 \\
+4 e^(x_1^2 + x_2^2 + x_3^2) x_1 x_3 & 4 e^(x_1^2 + x_2^2 + x_3^2) x_2 x_3 &
+4 e^(x_1^2 + x_2^2 + x_3^2) x_3^2 + 2 e^(x_1^2 + x_2^2 + x_3^2))\end{pmatrix}$$
+
+Which we can evaluate both of the above at $(0,0,0)$ to get the linear and the quadratic approximations.
+
+We get $$\nabla f = \begin{pmatrix}
+    0  \\
+    0 \\
+    0
+\end{pmatrix}$$ and $$\nabla^2 f = \begin{pmatrix}
+    2 & 0 & 0  \\
+    0 & 2 & 0 \\
+    0 & 0 & 2
+\end{pmatrix}$$
+
+Therefore the linear approximation is $$L = 1$$ and the quadratic approximation is $$Q = 1 + \begin{pmatrix}
+    x_1 & x_2 & x_3 
+\end{pmatrix}  \begin{pmatrix}
+    2 & 0 & 0  \\
+    0 & 2 & 0 \\
+    0 & 0 & 2
+\end{pmatrix}\begin{pmatrix}
+    x_1 \\ 
+    x_2 \\
+    x_3 
+\end{pmatrix} = 1 + 2\begin{pmatrix}
+    x_1 & x_2 & x_3
+\end{pmatrix}\begin{pmatrix}
+    x_1 \\ 
+    x_2 \\
+    x_3 
+\end{pmatrix} = 1 + 2x_1^2 +2x_2^2+2x_3^2$$
+
+## Problem 4
+
+Determine whether the following quadratic function has a min, max, or saddle point. Explain why.
+
+$$f(x_1,x_2)=2x_1-x_2^2-x_1x_2+5x_2-1$$
+
+## Response
+
+To determine this, we consider the matrix representation of this function. This is given by 
+
+$$f(x) = x^TAx + b^Tx$$
+
+with 
+
+$$A=\begin{pmatrix}
+    2 & -1   \\
+    0 & -1 
+\end{pmatrix}$$
+
+In the case where there is no cross term, we simply inspect the sign of the elements on the diagonal. If these elements are both positive, then the function is convex/opens up and has a min. If these are negative, the function is concave/opens down and has a max. If one is positive and one is negative, then it is a saddle point. 
+
+In this case we do have a cross term, so we must determine if the matrix A is positive definite, negative definite, or neither. If A is positive definite, then the function is convex, and if A is negative definite, the function is concave. This requires us to check the sign of the eigenvalues of A. 
+
+To find the eigenvalues, we solve $det(A-\lambda I) = 0$. 
+
+$$\begin{vmatrix}
+    2-\lambda & -1   \\
+    0 & -1-\lambda 
+\end{vmatrix} = 0$$
+
+This gives us: $(2-\lambda)(-1-\lambda)=0$, which we solve to get $\lambda=-1$ and $\lambda=2$. We see that the eigenvalues are of different signs, so the case is a saddle point. 

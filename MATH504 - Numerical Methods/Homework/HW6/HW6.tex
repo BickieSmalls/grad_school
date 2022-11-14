@@ -1,0 +1,80 @@
+\documentclass[12pt]{article}
+\usepackage{wasysym}
+% for bold math symbols, \bm command:
+\usepackage{bm}
+% for real number set symbol, \mathcal{R}:
+\usepackage{amsfonts}
+\usepackage{color}
+\newcommand{\tr}{^{\sf T}}
+\newcommand{\m}[1]{{\bf{#1}}}
+\newcommand{\g}[1]{\bm #1}
+\newcommand{\C}[1]{{\cal {#1}}}
+\topmargin -1.1in
+%\textwidth 6.42in
+\textwidth 7.00in
+\textheight 10in
+%\oddsidemargin -.075in
+%\evensidemargin -.075in
+\oddsidemargin -.30in
+\evensidemargin -.30in
+%-------------------------------------------------------------------------------
+% get epsf.tex file, for encapsulated postscript files:
+\input epsf
+%-------------------------------------------------------------------------------
+% macro for Postscript figures the easy way
+% usage:  \postscript{file.ps}{scale}
+% where scale is 1.0 for 100%, 0.5 for 50% reduction, etc.
+%
+\newcommand{\postscript}[2]
+ {\setlength{\epsfxsize}{#2\hsize}
+  \centerline{\epsfbox{#1}}}
+\begin{document}
+%----------------------------
+\vspace{.2 cm}
+
+\begin{center}
+{ \bf Homework 6 :: MATH 504 ::  Due Tuesday, October 18th, 11:59 pm} \\[.2in]
+\end{center}
+Your homework submission must be a single pdf called ``LASTNAME-hw6.pdf" 
+with your solutions to all theory problem to receive full credit. All answers must be typed in Latex. 
+
+\begin{enumerate}
+
+\item (Coding)
+Apply a fixed point method to find a root of $\cos x= \sin x$ on $[0,\frac{\pi}{2}]$, by converting the equation into a fixed point equation
+\[
+x = g(x)=x+\cos x -\sin x
+\]
+given $x_0=0$.  Note that $\cos \frac{\pi}{4}=\sin \frac{\pi}{4}$, so $x^*:=\frac{\pi}{4}\approx 0.7853982$. Fill out the
+following table
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+ \hline
+$k$  & $x_k$& $g(x_k)$& $e_k = |x_k-x^*|$& $e_k/e_{k-1}$         \\ \hline
+$1$& && & \\ \hline
+$10$& && & \\ \hline
+$20$& && & \\ \hline
+$30$& && & \\ \hline
+\end{tabular}
+\end{center}
+
+\item Let $f(x)=x^6-x-1$.
+\begin{itemize}
+\item [a.] Use $4$ iterations of the Newton's method with $x_0=2$ to get an approximate 
+root for this equation.
+\item [b.] Use $4$ iterations of the Secant method with $x_0=2$ and $x_1=1$ to get an 
+approximate root for this equation.
+%\item [c.] Compare the results in (a) and (b).
+\end{itemize}
+
+\item Consider the equation $e^{100x} (x-2)=0$. Apply Newton's method several times with $x^0=1$.
+What do you observe?
+
+
+\end{enumerate}
+
+
+
+
+
+\end{document}

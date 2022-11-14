@@ -1,0 +1,87 @@
+\documentclass[12pt]{article}
+\usepackage{wasysym}
+% for bold math symbols, \bm command:
+\usepackage{bm}
+% for real number set symbol, \mathcal{R}:
+\usepackage{amsfonts}
+\usepackage{color}
+\newcommand{\tr}{^{\sf T}}
+\newcommand{\m}[1]{{\bf{#1}}}
+\newcommand{\g}[1]{\bm #1}
+\newcommand{\C}[1]{{\cal {#1}}}
+\topmargin -1.1in
+%\textwidth 6.42in
+\textwidth 7.00in
+\textheight 10in
+%\oddsidemargin -.075in
+%\evensidemargin -.075in
+\oddsidemargin -.30in
+\evensidemargin -.30in
+%-------------------------------------------------------------------------------
+% get epsf.tex file, for encapsulated postscript files:
+\input epsf
+%-------------------------------------------------------------------------------
+% macro for Postscript figures the easy way
+% usage:  \postscript{file.ps}{scale}
+% where scale is 1.0 for 100%, 0.5 for 50% reduction, etc.
+%
+\newcommand{\postscript}[2]
+ {\setlength{\epsfxsize}{#2\hsize}
+  \centerline{\epsfbox{#1}}}
+\begin{document}
+%----------------------------
+\vspace{.2 cm}
+
+\begin{center}
+{ \bf Homework 5 :: MATH 504 ::  Due Tuesday, Oct 11th, 11:59 pm} \\[.2in]
+\end{center}
+Your homework submission must be a single pdf called ``LASTNAME-hw5.pdf" 
+with your solutions to all theory problem to receive full credit. All answers must be typed in Latex. 
+
+\begin{enumerate}
+ \item Create an $5\times 5$ matrix $A$ using the command {hilb(5)} in Matlab,
+or {scipy.linalg.hilbert(5)} in Python. Generate a random vector $x$, and compute $b=Ax$.
+Add a tiny amount of noise to $b$, call it $\hat b$. Then recover $\hat x$ from $A\hat x=\hat b$. 
+
+How accurate is the recovered solution? Why did this happen?
+You don't need to provide any code or console output, just describe what you did and what you got in a few sentence. 
+
+\item (Coding) Construct any $3 \times 3$ invertible symmetric matrix with no entry equal to $0$.  
+
+\begin{itemize}
+\item [a)] Using the function \textbf{eig} in Matlab or equivalent in other programming languages to find the dominant eigenvalue $\lambda^*_{\max}$ and its corresponding eigenvector $v^*$.
+\item [b)] Use the Power Method to find the (approximate) dominant eigenvector $v^{(k)}$ and eigenvalue 
+$\mu_k$ of this matrix for different stopping criteria 
+\[
+\frac{\| v^{(k)}-v^*\|_2}{\|v^*\|_2}\le \epsilon
+\]
+Record these data in the following table for given different $\epsilon$ values.
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+ \hline
+$\epsilon$   & iteration &    $|\mu_k-\lambda_{\max}^*|$ &  $\frac{\|v^{(k)}-v^*\|_2}{\|v^*\|_2}$  & $\frac{\|v^{(k)}-v^{(k-1)}\|_2}{\|v^{(k-1)}\|_2}$         \\ \hline
+$10^{-3}$& && & \\ \hline
+$10^{-6}$ & && & \\  \hline
+$10^{-9}$& && & \\  \hline
+\end{tabular}
+\end{center}
+
+\noindent
+Note that in practice, we don't know the exact eigenvalues and eigenvectors. So the stopping criteria needs to be 
+replaced by  $\frac{\|v^{(k)}-v^{(k-1)}\|_2}{\|v^{(k-1)}\|_2}<\epsilon$.  
+\end{itemize}
+
+
+\item (Coding) Build a connected network graph of $5$ nodes, that is, a network with $5$ pages.
+Determine the highest rated web page using the page rank approach discussed in the lecture.
+
+
+
+\end{enumerate}
+
+
+
+
+
+\end{document}
